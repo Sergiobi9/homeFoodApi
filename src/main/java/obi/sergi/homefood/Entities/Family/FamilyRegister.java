@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class FamilyRegister {
 
     private Family family;
-    private ArrayList<String> membersUserIds;
+    private ArrayList<FamilyMemberRegister> membersUsers;
 
     public FamilyRegister(){}
 
@@ -17,11 +17,11 @@ public class FamilyRegister {
         this.family = family;
     }
 
-    public ArrayList<String> getMembersUserIds() {
-        return membersUserIds;
+    public ArrayList<FamilyMemberRegister> getMembersUsers() {
+        return membersUsers;
     }
 
-    public void setMembersUserIds(ArrayList<String> membersUserIds) {
-        this.membersUserIds = membersUserIds;
+    public void setMembersUsers(ArrayList<FamilyMemberRegister> membersUsers) {
+        this.membersUsers = membersUsers;
     }
 }

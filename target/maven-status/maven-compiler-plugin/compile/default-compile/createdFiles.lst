@@ -1,14 +1,17 @@
 obi/sergi/homefood/Security/JwtTokenFilter.class
 obi/sergi/homefood/HomeFoodApplication.class
+obi/sergi/homefood/Entities/Family/FamilyMemberRegister.class
 obi/sergi/homefood/Security/CustomUserDetailsService.class
 obi/sergi/homefood/Repositories/User/UserRepository.class
 obi/sergi/homefood/Utils/Response.class
 obi/sergi/homefood/Security/CorsFilter.class
+obi/sergi/homefood/Utils/DateFormater.class
 obi/sergi/homefood/Utils/RandomGenerator.class
 obi/sergi/homefood/Security/WebSecurityConfiguration.class
 obi/sergi/homefood/Entities/Food/Food.class
 obi/sergi/homefood/Repositories/Role/RoleRepository.class
 obi/sergi/homefood/Repositories/Food/FoodRepository.class
+obi/sergi/homefood/Controllers/Family/FamilyMemberController.class
 obi/sergi/homefood/Entities/Family/FamilyMemberUserRequest.class
 obi/sergi/homefood/Entities/User/User.class
 obi/sergi/homefood/Entities/Family/Family.class

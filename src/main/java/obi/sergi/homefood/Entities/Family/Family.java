@@ -8,6 +8,7 @@ public class Family {
     private String id;
     private String name;
     private String ownerId;
+    private String dateRegistered;
 
     public Family(){}
 
@@ -33,5 +34,13 @@ public class Family {
 
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public String getDateRegistered() {
+        return dateRegistered;
+    }
+
+    public void setDateRegistered(String dateRegistered) {
+        this.dateRegistered = dateRegistered;
     }
 }

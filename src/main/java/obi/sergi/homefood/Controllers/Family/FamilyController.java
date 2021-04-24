@@ -2,6 +2,7 @@ package obi.sergi.homefood.Controllers.Family;
 
 import obi.sergi.homefood.Entities.Family.Family;
 import obi.sergi.homefood.Entities.Family.FamilyMember;
+import obi.sergi.homefood.Entities.Family.FamilyMemberRegister;
 import obi.sergi.homefood.Entities.Family.FamilyRegister;
 import obi.sergi.homefood.Entities.Role.Role;
 import obi.sergi.homefood.Entities.User.User;
@@ -35,8 +36,8 @@ public class FamilyController {
     @Autowired
     private RoleRepository roleRepository;
 
-    @PostMapping("/register")
-    public ResponseEntity registerFamily(@RequestBody FamilyRegister familyRegister) {
+    @PostMapping("/register/{currentDate}")
+    public ResponseEntity registerFamily(@PathVariable String currentDate, @RequestBody FamilyRegister familyRegister) {
         Map<Object, Object> model = new HashMap<>();
 
         /* Register family */
@@ -47,18 +48,19 @@ public class FamilyController {
         saveUserWithFamilyOwnerRole(ownerUser);
 
         /* Register family members */
-        ArrayList<String> familyMembers = familyRegister.getMembersUserIds();
+        ArrayList<FamilyMemberRegister> familyMembers = familyRegister.getMembersUsers();
         String familyId = family.getId();
         FamilyMember familyMember = new FamilyMember(familyId);
-        ArrayList<String> familyMemberUserIds = familyMember.getUserIds();
-        familyMemberUserIds.add(familyOwnerId);
+        ArrayList<FamilyMemberRegister> familyMemberUserIds = familyMember.getFamilyMembers();
+        familyMemberUserIds.add(new FamilyMemberRegister(familyOwnerId, currentDate));
 
         /* Add family members */
-        for (String userId : familyMembers){
+        for (FamilyMemberRegister member : familyMembers){
+            String userId = member.getUserId();
             User user = userRepository.findUserById(userId);
 
             if (user != null){
-                familyMemberUserIds.add(userId);
+                familyMemberUserIds.add(new FamilyMemberRegister(userId, currentDate));
                 saveUserWithFamilyMemberRole(user);
             }
         }

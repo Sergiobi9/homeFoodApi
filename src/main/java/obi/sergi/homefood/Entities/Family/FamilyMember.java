@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class FamilyMember {
 
     private String familyId;
-    private ArrayList<String> userIds;
+    private ArrayList<FamilyMemberRegister> familyMembers;
 
     public FamilyMember(String familyId){
         this.familyId = familyId;
-        userIds = new ArrayList<>();
+        familyMembers = new ArrayList<>();
     }
 
     public String getFamilyId() {
@@ -24,11 +24,11 @@ public class FamilyMember {
         this.familyId = familyId;
     }
 
-    public ArrayList<String> getUserIds() {
-        return userIds;
+    public ArrayList<FamilyMemberRegister> getFamilyMembers() {
+        return familyMembers;
     }
 
-    public void setUserIds(ArrayList<String> userIds) {
-        this.userIds = userIds;
+    public void setFamilyMembers(ArrayList<FamilyMemberRegister> familyMembers) {
+        this.familyMembers = familyMembers;
     }
 }
