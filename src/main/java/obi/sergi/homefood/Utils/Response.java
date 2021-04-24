@@ -8,4 +8,6 @@ public class Response {
     public static final String ACCOUNT_NOT_VALIDATED = "not validated";
     public static final String ACCOUNT_NOT_USER = "not user role";
 
+    public static final String CATEGORY_EXISTS = "Category already exists";
+
 }
