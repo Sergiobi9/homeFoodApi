@@ -6,6 +6,7 @@ import obi.sergi.homefood.Repositories.Role.RoleRepository;
 import obi.sergi.homefood.Repositories.User.UserRepository;
 import obi.sergi.homefood.Security.JwtTokenProvider;
 import obi.sergi.homefood.Utils.Constants;
+import obi.sergi.homefood.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+
+import static obi.sergi.homefood.Utils.Response.USER_DO_NOT_EXIST;
+import static obi.sergi.homefood.Utils.Response.USER_EXISTS;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -39,7 +43,7 @@ public class UserController {
         Map<Object, Object> model = new HashMap<>();
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        saveUserWithUserRole(user);
+        user = saveUserWithUserRole(user);
 
         String userEmail = user.getEmail();
         String token = jwtTokenProvider.createToken(userEmail, user.getRoles());
@@ -49,10 +53,24 @@ public class UserController {
         return new ResponseEntity(model, HttpStatus.valueOf(200));
     }
 
-    private void saveUserWithUserRole(User user) {
+    @GetMapping("/exist/email/{email}")
+    public ResponseEntity checkUserAlreadyExists(@PathVariable String email) {
+        Map<Object, Object> model = new HashMap<>();
+        User existingUser = userRepository.findUserByEmail(email);
+
+        if (existingUser != null) {
+            model.put(Response.INFO, USER_EXISTS);
+        } else {
+            model.put(Response.INFO, USER_DO_NOT_EXIST);
+        }
+        return new ResponseEntity(model, HttpStatus.valueOf(200));
+    }
+
+    private User saveUserWithUserRole(User user) {
         Role userRole = roleRepository.findByRole(Constants.USER_ROLE);
         user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
         user.setUserRole(Constants.USER_ROLE);
         userRepository.save(user);
+        return user;
     }
 }
