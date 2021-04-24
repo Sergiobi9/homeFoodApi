@@ -15,6 +15,7 @@
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/User/User.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Role/Role.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Repositories/Family/FamilyRepository.java
+/Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Utils/Response.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Repositories/Role/RoleRepository.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Security/JwtTokenFilter.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Security/WebSecurityConfiguration.java
