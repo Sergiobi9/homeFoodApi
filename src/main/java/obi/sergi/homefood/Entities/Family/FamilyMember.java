@@ -11,7 +11,10 @@ public class FamilyMember {
     private String familyId;
     private ArrayList<String> userIds;
 
-    public FamilyMember(){}
+    public FamilyMember(String familyId){
+        this.familyId = familyId;
+        userIds = new ArrayList<>();
+    }
 
     public String getFamilyId() {
         return familyId;

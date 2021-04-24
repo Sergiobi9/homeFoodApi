@@ -7,6 +7,7 @@ public class Family {
 
     private String id;
     private String name;
+    private String ownerId;
 
     public Family(){}
 
@@ -24,5 +25,13 @@ public class Family {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 }
