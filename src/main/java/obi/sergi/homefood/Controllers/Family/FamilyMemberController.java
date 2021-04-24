@@ -27,18 +27,18 @@ public class FamilyMemberController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/familyId/{familyId}")
-    public ResponseEntity getFamilyMembers(@PathVariable String familyId) {
-        FamilyMember familyMember = familyMemberRepository.findFamilyMemberByFamilyId(familyId);
+    @GetMapping("/userId/{userId}")
+    public ResponseEntity getFamilyMembers(@PathVariable String userId) {
+        FamilyMember familyMember = familyMemberRepository.findByUserId(userId);
 
         ArrayList<FamilyMemberDetailed> familyMembersDetailed = new ArrayList<>();
         ArrayList<FamilyMemberRegister> familyMembers = familyMember.getFamilyMembers();
 
         for (FamilyMemberRegister familyMemberRegister : familyMembers){
-            String userId = familyMemberRegister.getUserId();
+            String familyMemberUserId = familyMemberRegister.getUserId();
             String familyMemberSince = familyMemberRegister.getDateRegistered();
 
-            User user = userRepository.findUserById(userId);
+            User user = userRepository.findUserById(familyMemberUserId);
 
             if (user != null){
                 String familyMemberSinceFormated = DateFormater.getDateWithFormat(DateFormater.getDateAsCalendar(familyMemberSince));

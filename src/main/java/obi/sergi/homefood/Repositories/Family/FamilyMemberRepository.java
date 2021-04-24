@@ -5,5 +5,7 @@ import obi.sergi.homefood.Entities.Food.Food;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface FamilyMemberRepository extends MongoRepository<FamilyMember, String> {
-    FamilyMember findFamilyMemberByFamilyId(String familyId);
+    @org.springframework.data.mongodb.repository.Query(value = "{ 'familyMembers': { $elemMatch: { 'userId' : ?0 } }}")
+    FamilyMember findByUserId(String userId);
+
 }
