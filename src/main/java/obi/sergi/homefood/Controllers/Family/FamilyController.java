@@ -44,7 +44,7 @@ public class FamilyController {
         familyRepository.insert(family);
 
         /* Register family members */
-        ArrayList<String> familyMembers = familyRegister.getMembersEmails();
+        ArrayList<String> familyMembers = familyRegister.getMembersUserIds();
         String familyId = family.getOwnerId();
         String familyOwnerId = family.getOwnerId();
 

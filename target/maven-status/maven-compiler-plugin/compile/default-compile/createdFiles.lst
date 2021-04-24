@@ -9,6 +9,7 @@ obi/sergi/homefood/Security/WebSecurityConfiguration.class
 obi/sergi/homefood/Entities/Food/Food.class
 obi/sergi/homefood/Repositories/Role/RoleRepository.class
 obi/sergi/homefood/Repositories/Food/FoodRepository.class
+obi/sergi/homefood/Entities/Family/FamilyMemberUserRequest.class
 obi/sergi/homefood/Entities/User/User.class
 obi/sergi/homefood/Entities/Family/Family.class
 obi/sergi/homefood/Security/JwtTokenProvider.class

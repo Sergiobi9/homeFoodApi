@@ -1,5 +1,6 @@
 package obi.sergi.homefood.Controllers.User;
 
+import obi.sergi.homefood.Entities.Family.FamilyMemberUserRequest;
 import obi.sergi.homefood.Entities.Role.Role;
 import obi.sergi.homefood.Entities.User.User;
 import obi.sergi.homefood.Repositories.Role.RoleRepository;
@@ -19,7 +20,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import static obi.sergi.homefood.Utils.RandomGenerator.generateRandomUid;
 import static obi.sergi.homefood.Utils.Response.USER_DO_NOT_EXIST;
 import static obi.sergi.homefood.Utils.Response.USER_EXISTS;
 
@@ -70,6 +70,18 @@ public class UserController {
             model.put(Response.INFO, USER_DO_NOT_EXIST);
         }
         return new ResponseEntity(model, HttpStatus.valueOf(200));
+    }
+
+    @GetMapping("/request/family/member/{identifier}")
+    public ResponseEntity checkUserExistToBeFamilyMember(@PathVariable String identifier) {
+        User existingUser = userRepository.findUserByEmailOrUid(identifier, identifier);
+
+        FamilyMemberUserRequest familyMemberUserRequest = null;
+
+        if (existingUser != null)
+            familyMemberUserRequest = new FamilyMemberUserRequest(existingUser);
+
+        return new ResponseEntity(familyMemberUserRequest, HttpStatus.valueOf(200));
     }
 
     private User saveUserWithUserRole(User user) {
