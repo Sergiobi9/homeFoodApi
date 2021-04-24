@@ -6,6 +6,7 @@ import obi.sergi.homefood.Repositories.Role.RoleRepository;
 import obi.sergi.homefood.Repositories.User.UserRepository;
 import obi.sergi.homefood.Security.JwtTokenProvider;
 import obi.sergi.homefood.Utils.Constants;
+import obi.sergi.homefood.Utils.RandomGenerator;
 import obi.sergi.homefood.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
+import static obi.sergi.homefood.Utils.RandomGenerator.generateRandomUid;
 import static obi.sergi.homefood.Utils.Response.USER_DO_NOT_EXIST;
 import static obi.sergi.homefood.Utils.Response.USER_EXISTS;
 
@@ -43,6 +45,9 @@ public class UserController {
         Map<Object, Object> model = new HashMap<>();
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+        String userUid = retrieveUserUid();
+
         user = saveUserWithUserRole(user);
 
         String userEmail = user.getEmail();
@@ -72,5 +77,17 @@ public class UserController {
         user.setUserRole(Constants.USER_ROLE);
         userRepository.save(user);
         return user;
+    }
+
+    private String retrieveUserUid(){
+        String userUid = "";
+        boolean isUserUidAlreadyTaken = true;
+
+        while (isUserUidAlreadyTaken){
+            userUid = RandomGenerator.generateRandomUid();
+            isUserUidAlreadyTaken = userRepository.findUserByUidContaining(userUid);
+        }
+
+        return userUid;
     }
 }
