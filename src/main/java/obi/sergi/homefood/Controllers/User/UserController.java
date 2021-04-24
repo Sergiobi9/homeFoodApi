@@ -47,6 +47,7 @@ public class UserController {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
         String userUid = retrieveUserUid();
+        user.setUid(userUid);
 
         user = saveUserWithUserRole(user);
 
@@ -85,9 +86,13 @@ public class UserController {
 
         while (isUserUidAlreadyTaken){
             userUid = RandomGenerator.generateRandomUid();
-            isUserUidAlreadyTaken = userRepository.findUserByUidContaining(userUid);
+            isUserUidAlreadyTaken = isUserExistingByUid(userUid);
         }
 
         return userUid;
+    }
+
+    private boolean isUserExistingByUid(String userUid) {
+        return userRepository.findUserByUid(userUid) != null;
     }
 }
