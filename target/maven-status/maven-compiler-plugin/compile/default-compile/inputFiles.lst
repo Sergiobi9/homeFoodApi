@@ -1,3 +1,4 @@
+/Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Category/Category.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Repositories/User/UserRepository.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Security/CorsFilter.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Family/FamilyMemberUserRequest.java
@@ -15,14 +16,19 @@
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Security/WebSecurityConfiguration.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Authentication/AuthenticationData.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Family/FamilyRegister.java
+/Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Family/FamilyMemberDetailed.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Controllers/User/UserController.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Controllers/Family/FamilyMemberController.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Utils/Constants.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Family/FamilyMember.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Food/Food.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Security/JwtConfigurer.java
+/Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Family/FamilyMemberRegister.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Controllers/Family/FamilyController.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Repositories/Family/FamilyMemberRepository.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Controllers/Authentication/AuthenticationController.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Utils/RandomGenerator.java
+/Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Utils/DateFormater.java
 /Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Utils/Response.java
+/Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Supermarket/Supermarket.java
+/Users/sergiobi23/Documents/HomeFood/HomeFoodProject/homeFoodApi/src/main/java/obi/sergi/homefood/Entities/Category/CategoryFoodRegister.java
