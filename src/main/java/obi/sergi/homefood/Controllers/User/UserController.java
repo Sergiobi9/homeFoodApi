@@ -39,7 +39,7 @@ public class UserController {
         Map<Object, Object> model = new HashMap<>();
 
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        saveUserWithRole(user, Constants.USER_ROLE);
+        saveUserWithUserRole(user);
 
         String userEmail = user.getEmail();
         String token = jwtTokenProvider.createToken(userEmail, user.getRoles());
@@ -49,10 +49,10 @@ public class UserController {
         return new ResponseEntity(model, HttpStatus.valueOf(200));
     }
 
-    private void saveUserWithRole(User user, String role) {
-        Role userRole = roleRepository.findByRole(role);
+    private void saveUserWithUserRole(User user) {
+        Role userRole = roleRepository.findByRole(Constants.USER_ROLE);
         user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
-        user.setUserRole(role);
+        user.setUserRole(Constants.USER_ROLE);
         userRepository.save(user);
     }
 }

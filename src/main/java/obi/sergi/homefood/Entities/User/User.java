@@ -16,6 +16,7 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+    private String dateRegistered;
     private String userRole;
 
     @DBRef(lazy = true)
@@ -61,6 +62,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getDateRegistered() {
+        return dateRegistered;
+    }
+
+    public void setDateRegistered(String dateRegistered) {
+        this.dateRegistered = dateRegistered;
     }
 
     public String getUserRole() {

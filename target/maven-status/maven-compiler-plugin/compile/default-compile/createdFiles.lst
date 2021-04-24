@@ -7,9 +7,11 @@ obi/sergi/homefood/Entities/User/User.class
 obi/sergi/homefood/Repositories/User/UserRepository.class
 obi/sergi/homefood/Entities/Family/Family.class
 obi/sergi/homefood/Security/JwtTokenProvider.class
+obi/sergi/homefood/Utils/Constants.class
 obi/sergi/homefood/Security/JwtConfigurer.class
 obi/sergi/homefood/Security/CorsFilter.class
 obi/sergi/homefood/Repositories/Family/FamilyRepository.class
+obi/sergi/homefood/Controllers/User/UserController.class
 obi/sergi/homefood/Entities/Role/Role.class
 obi/sergi/homefood/Security/WebSecurityConfiguration.class
 obi/sergi/homefood/Repositories/Family/FamilyMemberRepository.class
