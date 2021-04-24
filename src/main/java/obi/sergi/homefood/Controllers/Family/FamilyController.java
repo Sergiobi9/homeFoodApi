@@ -42,23 +42,24 @@ public class FamilyController {
         /* Register family */
         Family family = familyRegister.getFamily();
         familyRepository.insert(family);
+        String familyOwnerId = family.getOwnerId();
+        User ownerUser = userRepository.findUserById(familyOwnerId);
+        saveUserWithFamilyOwnerRole(ownerUser);
 
         /* Register family members */
         ArrayList<String> familyMembers = familyRegister.getMembersUserIds();
-        String familyId = family.getOwnerId();
-        String familyOwnerId = family.getOwnerId();
-
+        String familyId = family.getId();
         FamilyMember familyMember = new FamilyMember(familyId);
         ArrayList<String> familyMemberUserIds = familyMember.getUserIds();
         familyMemberUserIds.add(familyOwnerId);
 
         /* Add family members */
-        for (String email : familyMembers){
-            User user = userRepository.findUserByEmail(email);
+        for (String userId : familyMembers){
+            User user = userRepository.findUserById(userId);
 
             if (user != null){
-                String userId = user.getId();
                 familyMemberUserIds.add(userId);
+                saveUserWithFamilyMemberRole(user);
             }
         }
 
@@ -70,17 +71,17 @@ public class FamilyController {
     }
 
     private User saveUserWithFamilyMemberRole(User user) {
-        Role userRole = roleRepository.findByRole(Constants.USER_ROLE);
+        Role userRole = roleRepository.findByRole(Constants.FAMILY_MEMBER_ROLE);
         user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
-        user.setUserRole(Constants.USER_ROLE);
+        user.setUserRole(Constants.FAMILY_MEMBER_ROLE);
         userRepository.save(user);
         return user;
     }
 
     private User saveUserWithFamilyOwnerRole(User user) {
-        Role userRole = roleRepository.findByRole(Constants.USER_ROLE);
+        Role userRole = roleRepository.findByRole(Constants.FAMILY_OWNER_ROLE);
         user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
-        user.setUserRole(Constants.USER_ROLE);
+        user.setUserRole(Constants.FAMILY_OWNER_ROLE);
         userRepository.save(user);
         return user;
     }
