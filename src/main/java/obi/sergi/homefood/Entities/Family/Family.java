@@ -1,16 +1,14 @@
-package obi.sergi.homefood.Entities;
+package obi.sergi.homefood.Entities.Family;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "FOOD")
-public class Food {
+@Document(collection = "FAMILY")
+public class Family {
 
-    @Id
     private String id;
     private String name;
 
-    public Food(){}
+    public Family(){}
 
     public String getId() {
         return id;
