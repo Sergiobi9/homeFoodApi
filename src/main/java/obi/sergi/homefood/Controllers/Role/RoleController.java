@@ -15,8 +15,8 @@ public class RoleController {
     @Autowired
     private RoleRepository roleRepository;
 
-    @PostMapping("/create")
-    public ResponseEntity createRole(@RequestBody Role role) {
+    @PostMapping("/register")
+    public ResponseEntity registerRole(@RequestBody Role role) {
         roleRepository.save(role);
         return new ResponseEntity(role, HttpStatus.valueOf(200));
     }
