@@ -82,6 +82,8 @@ public class FoodController {
         Map<Object, Object> model = new HashMap<>();
 
         Category category = categoryRepository.findCategoryById(categoryId);
+        food.setAvailability(Constants.FOOD_UNDEFINED_AVAILABILITY);
+        foodRepository.save(food);
 
         if (category != null){
             ArrayList<CategoryFoodRegister> foodItems = category.getFoodItems();
@@ -89,9 +91,6 @@ public class FoodController {
             category.setFoodItems(foodItems);
             categoryRepository.save(category);
         }
-
-        food.setAvailability(Constants.FOOD_UNDEFINED_AVAILABILITY);
-        foodRepository.save(food);
 
         model.put(Response.INFO, SUCCESS);
         return new ResponseEntity(model, HttpStatus.valueOf(200));
