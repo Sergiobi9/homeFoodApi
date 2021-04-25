@@ -4,6 +4,7 @@ obi/sergi/homefood/Entities/Family/FamilyMemberRegister.class
 obi/sergi/homefood/Security/CustomUserDetailsService.class
 obi/sergi/homefood/Repositories/User/UserRepository.class
 obi/sergi/homefood/Utils/Response.class
+obi/sergi/homefood/Repositories/Category/CategoryRepository.class
 obi/sergi/homefood/Security/CorsFilter.class
 obi/sergi/homefood/Utils/DateFormater.class
 obi/sergi/homefood/Utils/RandomGenerator.class
@@ -23,5 +24,6 @@ obi/sergi/homefood/Controllers/User/UserController.class
 obi/sergi/homefood/Entities/Role/Role.class
 obi/sergi/homefood/Entities/Authentication/AuthenticationData.class
 obi/sergi/homefood/Repositories/Family/FamilyMemberRepository.class
+obi/sergi/homefood/Controllers/Category/CategoryController.class
 obi/sergi/homefood/Controllers/Authentication/AuthenticationController.class
 obi/sergi/homefood/Entities/Family/FamilyMember.class
