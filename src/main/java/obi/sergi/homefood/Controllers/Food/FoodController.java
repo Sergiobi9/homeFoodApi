@@ -65,7 +65,7 @@ public class FoodController {
         }
 
         /* Add category others if remaining food with no categories */
-        if (foodItems.isEmpty()){
+        if (!foodItems.isEmpty()){
             FoodList foodRemainigWithNoCategories = new FoodList(foodItems);
             foodLists.add(foodRemainigWithNoCategories);
         }
