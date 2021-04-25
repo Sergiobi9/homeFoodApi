@@ -16,6 +16,12 @@ public class FoodList {
         this.foodItems = foodItems;
     }
 
+    public FoodList(ArrayList<FoodItem> foodItems){
+        this.categoryId = "";
+        this.categoryName = "";
+        this.foodItems = foodItems;
+    }
+
     public String getCategoryId() {
         return categoryId;
     }

@@ -31,9 +31,12 @@ public class FoodController {
 
     @GetMapping("/all/list/familyId/{familyId}")
     public ResponseEntity getFoodListWithCategories(@PathVariable String familyId) {
+
         List<FoodList> foodLists = new ArrayList<>();
         List<Category> categories = categoryRepository.findCategoriesByFamilyId(familyId);
+        List<String> foodIds = new ArrayList<>();
 
+        /* Get existing food categories */
         for (Category category : categories){
             ArrayList<CategoryFoodRegister> categoryFood = category.getFoodItems();
 
@@ -42,11 +45,29 @@ public class FoodController {
                 String foodId = categoryFoodRegister.getFoodId();
 
                 Food food = foodRepository.findFoodById(foodId);
-
                 foodItems.add(new FoodItem(food));
+                foodIds.add(foodId);
             }
 
             foodLists.add(new FoodList(category, foodItems));
+        }
+
+        /* Get existing food by family to check if there is any with no category */
+        List<Food> allFamilyFood = foodRepository.findFoodsByFamilyId(familyId);
+
+        ArrayList<FoodItem> foodItems = new ArrayList<>();
+        for (Food food : allFamilyFood){
+            String foodId = food.getId();
+
+            if (!foodIds.contains(foodId)){
+                foodItems.add(new FoodItem(food));
+            }
+        }
+
+        /* Add category others if remaining food with no categories */
+        if (foodItems.isEmpty()){
+            FoodList foodRemainigWithNoCategories = new FoodList(foodItems);
+            foodLists.add(foodRemainigWithNoCategories);
         }
 
         return new ResponseEntity(foodLists, HttpStatus.valueOf(200));
