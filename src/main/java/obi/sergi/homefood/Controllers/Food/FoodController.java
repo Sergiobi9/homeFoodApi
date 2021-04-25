@@ -76,9 +76,19 @@ public class FoodController {
         return new ResponseEntity(foodLists, HttpStatus.valueOf(200));
     }
 
-    @PostMapping("/register")
-    public ResponseEntity registerFood(@RequestBody Food food) {
+    @PostMapping("/register/categoryId/{categoryId}")
+    public ResponseEntity registerFoodToCategory(@PathVariable String categoryId, @RequestBody Food food) {
         Map<Object, Object> model = new HashMap<>();
+
+        Category category = categoryRepository.findCategoryById(categoryId);
+
+        if (category != null){
+            ArrayList<CategoryFoodRegister> foodItems = category.getFoodItems();
+            foodItems.add(new CategoryFoodRegister(food));
+            category.setFoodItems(foodItems);
+            categoryRepository.save(category);
+        }
+
         foodRepository.save(food);
 
         model.put(Response.INFO, SUCCESS);
