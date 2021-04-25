@@ -14,6 +14,7 @@ public class Food {
     private String familyId;
     private String creatorUserId;
     private String dateAdded;
+    private int availability;
     private ArrayList<String> availableFoodLocationIds;
 
     public Food(){}
@@ -56,6 +57,14 @@ public class Food {
 
     public void setDateAdded(String dateAdded) {
         this.dateAdded = dateAdded;
+    }
+
+    public int getAvailability() {
+        return availability;
+    }
+
+    public void setAvailability(int availability) {
+        this.availability = availability;
     }
 
     public ArrayList<String> getAvailableFoodLocationIds() {

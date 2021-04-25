@@ -8,6 +8,7 @@ import obi.sergi.homefood.Entities.Food.FoodItem;
 import obi.sergi.homefood.Entities.Food.FoodList;
 import obi.sergi.homefood.Repositories.Category.CategoryRepository;
 import obi.sergi.homefood.Repositories.Food.FoodRepository;
+import obi.sergi.homefood.Utils.Constants;
 import obi.sergi.homefood.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -89,6 +90,7 @@ public class FoodController {
             categoryRepository.save(category);
         }
 
+        food.setAvailability(Constants.FOOD_UNDEFINED_AVAILABILITY);
         foodRepository.save(food);
 
         model.put(Response.INFO, SUCCESS);
