@@ -2,7 +2,7 @@ package obi.sergi.homefood.Entities.ItemLocation;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "FOOD_LOCATION")
+@Document(collection = "ITEM_LOCATION")
 public class ItemLocation {
 
     private String id;
