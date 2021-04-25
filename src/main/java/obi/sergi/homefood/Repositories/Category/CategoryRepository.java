@@ -11,4 +11,6 @@ public interface CategoryRepository extends MongoRepository<Category, String> {
     Category findCategoryByName(String name);
     Category findCategoryById(String categoryId);
     List<Category> findCategoriesByFamilyId(String familyId);
+    @org.springframework.data.mongodb.repository.Query(value = "{ 'items': { $elemMatch: { 'itemId' : ?0 } }}")
+    List<Category> findByItemId(String familyId);
 }

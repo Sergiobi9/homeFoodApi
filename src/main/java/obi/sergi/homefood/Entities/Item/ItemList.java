@@ -8,15 +8,15 @@ public class ItemList {
 
     private String categoryId;
     private String categoryName;
-    private ArrayList<ItemDetail> itemDetails;
+    private ArrayList<ItemDetails> itemDetails;
 
-    public ItemList(Category category, ArrayList<ItemDetail> itemDetails){
+    public ItemList(Category category, ArrayList<ItemDetails> itemDetails){
         this.categoryId = category.getId();
         this.categoryName = category.getName();
         this.itemDetails = itemDetails;
     }
 
-    public ItemList(ArrayList<ItemDetail> itemDetails){
+    public ItemList(ArrayList<ItemDetails> itemDetails){
         this.categoryId = "";
         this.categoryName = "";
         this.itemDetails = itemDetails;
@@ -38,11 +38,11 @@ public class ItemList {
         this.categoryName = categoryName;
     }
 
-    public ArrayList<ItemDetail> getItemDetails() {
+    public ArrayList<ItemDetails> getItemDetails() {
         return itemDetails;
     }
 
-    public void setItemDetails(ArrayList<ItemDetail> itemDetails) {
+    public void setItemDetails(ArrayList<ItemDetails> itemDetails) {
         this.itemDetails = itemDetails;
     }
 }

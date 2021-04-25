@@ -1,12 +1,16 @@
 package obi.sergi.homefood.Controllers.Item;
 
 import obi.sergi.homefood.Entities.Category.Category;
+import obi.sergi.homefood.Entities.Category.CategoryDetails;
 import obi.sergi.homefood.Entities.Category.CategoryItemRegister;
 import obi.sergi.homefood.Entities.Item.Item;
-import obi.sergi.homefood.Entities.Item.ItemDetail;
+import obi.sergi.homefood.Entities.Item.ItemDetails;
 import obi.sergi.homefood.Entities.Item.ItemList;
+import obi.sergi.homefood.Entities.ItemLocation.ItemLocation;
+import obi.sergi.homefood.Entities.ItemLocation.ItemLocationDetails;
 import obi.sergi.homefood.Repositories.Category.CategoryRepository;
 import obi.sergi.homefood.Repositories.Item.ItemRepository;
+import obi.sergi.homefood.Repositories.ItemLocation.ItemLocationRepository;
 import obi.sergi.homefood.Utils.Constants;
 import obi.sergi.homefood.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +34,9 @@ public class ItemController {
     private CategoryRepository categoryRepository;
 
     @Autowired
+    private ItemLocationRepository itemLocationRepository;
+
+    @Autowired
     private ItemRepository itemRepository;
 
     @GetMapping("/all/list/familyId/{familyId}")
@@ -40,15 +47,15 @@ public class ItemController {
         List<String> itemIds = new ArrayList<>();
 
         /* Get existing item categories */
-        for (Category category : categories){
+        for (Category category : categories) {
             ArrayList<CategoryItemRegister> categoryItems = category.getItems();
 
-            ArrayList<ItemDetail> itemDetails = new ArrayList<>();
-            for (CategoryItemRegister categoryItemRegister : categoryItems){
+            ArrayList<ItemDetails> itemDetails = new ArrayList<>();
+            for (CategoryItemRegister categoryItemRegister : categoryItems) {
                 String itemId = categoryItemRegister.getItemId();
 
                 Item item = itemRepository.findItemById(itemId);
-                itemDetails.add(new ItemDetail(item));
+                itemDetails.add(new ItemDetails(item));
                 itemIds.add(itemId);
             }
 
@@ -58,17 +65,17 @@ public class ItemController {
         /* Get existing item by family to check if there is any with no category */
         List<Item> allFamilyItem = itemRepository.findItemsByFamilyId(familyId);
 
-        ArrayList<ItemDetail> itemDetails = new ArrayList<>();
-        for (Item item : allFamilyItem){
+        ArrayList<ItemDetails> itemDetails = new ArrayList<>();
+        for (Item item : allFamilyItem) {
             String itemId = item.getId();
 
-            if (!itemIds.contains(itemId)){
-                itemDetails.add(new ItemDetail(item));
+            if (!itemIds.contains(itemId)) {
+                itemDetails.add(new ItemDetails(item));
             }
         }
 
         /* Add category others if remaining item with no categories */
-        if (!itemDetails.isEmpty()){
+        if (!itemDetails.isEmpty()) {
             ItemList itemRemainingWithNoCategories = new ItemList(itemDetails);
             itemLists.add(itemRemainingWithNoCategories);
         }
@@ -84,7 +91,7 @@ public class ItemController {
         item.setAvailability(Constants.ITEM_UNDEFINED_AVAILABILITY);
         itemRepository.save(item);
 
-        if (category != null){
+        if (category != null) {
             ArrayList<CategoryItemRegister> items = category.getItems();
             items.add(new CategoryItemRegister(item));
             category.setItems(items);
@@ -92,6 +99,33 @@ public class ItemController {
         }
 
         model.put(Response.INFO, SUCCESS);
+        return new ResponseEntity(model, HttpStatus.valueOf(200));
+    }
+
+    @GetMapping("/detailed/itemId/{itemId}")
+    public ResponseEntity getItemDetailsByItemId(@PathVariable String itemId) {
+        Map<Object, Object> model = new HashMap<>();
+
+        Item item = itemRepository.findItemById(itemId);
+
+        List<CategoryDetails> categoryDetails = new ArrayList<>();
+        List<Category> categories = categoryRepository.findByItemId(itemId);
+
+        for(Category category : categories){
+            categoryDetails.add(new CategoryDetails(category));
+        }
+
+        List<ItemLocationDetails> itemLocationDetails = new ArrayList<>();
+        List<String> itemLocationIds = item.getAvailableItemLocationIds();
+        for(String itemLocationId : itemLocationIds){
+            ItemLocation itemLocation = itemLocationRepository.findItemLocationById(itemLocationId);
+            itemLocationDetails.add(new ItemLocationDetails(itemLocation));
+        }
+
+        model.put("item", item);
+        model.put("categoryDetails", categoryDetails);
+        model.put("itemLocationDetails", itemLocationDetails);
+
         return new ResponseEntity(model, HttpStatus.valueOf(200));
     }
 }

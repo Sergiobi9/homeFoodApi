@@ -8,6 +8,7 @@ import java.util.List;
 public interface ItemLocationRepository extends MongoRepository<ItemLocation, String> {
 
     List<ItemLocation> findItemLocationsByFamilyId(String familyId);
-    ItemLocation findItemLocationByName(String foodLocationName);
+    ItemLocation findItemLocationByName(String itemLocationName);
+    ItemLocation findItemLocationById(String itemLocationId);
 
 }
