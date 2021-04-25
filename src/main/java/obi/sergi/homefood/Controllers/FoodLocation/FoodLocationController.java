@@ -49,8 +49,9 @@ public class FoodLocationController {
         FoodLocation foodLocation = foodLocationRepository.findFoodLocationByName(foodLocationName);
 
         if (foodLocation == null){
-            foodLocationRepository.save(new FoodLocation(foodLocationRegisterSimplified));
-            return new ResponseEntity(foodLocationRegisterSimplified, HttpStatus.valueOf(200));
+            foodLocation = new FoodLocation(foodLocationRegisterSimplified);
+            foodLocationRepository.save(foodLocation);
+            return new ResponseEntity(new FoodLocationSimplified(foodLocation), HttpStatus.valueOf(200));
         } else {
             return new ResponseEntity(null, HttpStatus.valueOf(200));
         }

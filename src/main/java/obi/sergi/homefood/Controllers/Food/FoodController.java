@@ -8,6 +8,7 @@ import obi.sergi.homefood.Entities.Food.FoodItem;
 import obi.sergi.homefood.Entities.Food.FoodList;
 import obi.sergi.homefood.Repositories.Category.CategoryRepository;
 import obi.sergi.homefood.Repositories.Food.FoodRepository;
+import obi.sergi.homefood.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static obi.sergi.homefood.Utils.Response.SUCCESS;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -71,5 +74,14 @@ public class FoodController {
         }
 
         return new ResponseEntity(foodLists, HttpStatus.valueOf(200));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity registerFood(@RequestBody Food food) {
+        Map<Object, Object> model = new HashMap<>();
+        foodRepository.save(food);
+
+        model.put(Response.INFO, SUCCESS);
+        return new ResponseEntity(model, HttpStatus.valueOf(200));
     }
 }
