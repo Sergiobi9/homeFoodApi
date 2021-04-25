@@ -2,27 +2,27 @@ package obi.sergi.homefood.Entities.ItemLocation;
 
 public class ItemLocationSimplified {
 
-    private String foodLocationId;
-    private String foodLocationName;
+    private String itemLocationId;
+    private String itemLocationName;
 
     public ItemLocationSimplified(ItemLocation itemLocation) {
-        this.foodLocationId = itemLocation.getId();
-        this.foodLocationName = itemLocation.getName();
+        this.itemLocationId = itemLocation.getId();
+        this.itemLocationName = itemLocation.getName();
     }
 
-    public String getFoodLocationId() {
-        return foodLocationId;
+    public String getItemLocationId() {
+        return itemLocationId;
     }
 
-    public void setFoodLocationId(String foodLocationId) {
-        this.foodLocationId = foodLocationId;
+    public void setItemLocationId(String itemLocationId) {
+        this.itemLocationId = itemLocationId;
     }
 
-    public String getFoodLocationName() {
-        return foodLocationName;
+    public String getItemLocationName() {
+        return itemLocationName;
     }
 
-    public void setFoodLocationName(String foodLocationName) {
-        this.foodLocationName = foodLocationName;
+    public void setItemLocationName(String itemLocationName) {
+        this.itemLocationName = itemLocationName;
     }
 }

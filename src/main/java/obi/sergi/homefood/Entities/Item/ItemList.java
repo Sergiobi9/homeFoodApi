@@ -38,11 +38,11 @@ public class ItemList {
         this.categoryName = categoryName;
     }
 
-    public ArrayList<ItemDetail> getFoodItems() {
+    public ArrayList<ItemDetail> getItemDetails() {
         return itemDetails;
     }
 
-    public void setFoodItems(ArrayList<ItemDetail> itemDetails) {
+    public void setItemDetails(ArrayList<ItemDetail> itemDetails) {
         this.itemDetails = itemDetails;
     }
 }
