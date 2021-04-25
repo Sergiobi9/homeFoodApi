@@ -1,8 +1,7 @@
 package obi.sergi.homefood.Controllers.Category;
 
 import obi.sergi.homefood.Entities.Category.Category;
-import obi.sergi.homefood.Entities.Category.CategoryFoodRegister;
-import obi.sergi.homefood.Entities.Role.Role;
+import obi.sergi.homefood.Entities.Category.CategoryItemRegister;
 import obi.sergi.homefood.Repositories.Category.CategoryRepository;
 import obi.sergi.homefood.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +36,8 @@ public class CategoryController {
             return new ResponseEntity(model, HttpStatus.valueOf(200));
         }
 
-        ArrayList<CategoryFoodRegister> foodItems = category.getFoodItems();
-        if (foodItems == null) category.setFoodItems(new ArrayList<>());
+        ArrayList<CategoryItemRegister> items = category.getItems();
+        if (items == null) category.setItems(new ArrayList<>());
 
         categoryRepository.save(category);
         model.put(Response.INFO, SUCCESS);

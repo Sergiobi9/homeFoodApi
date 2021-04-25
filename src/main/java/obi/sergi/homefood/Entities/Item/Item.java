@@ -1,21 +1,23 @@
-package obi.sergi.homefood.Entities.Category;
+package obi.sergi.homefood.Entities.Item;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
 
-@Document(collection = "CATEGORY")
-public class Category {
+@Document(collection = "ITEM")
+public class Item {
 
+    @Id
     private String id;
     private String name;
     private String familyId;
     private String creatorUserId;
     private String dateAdded;
-    private ArrayList<CategoryItemRegister> items;
+    private int availability;
+    private ArrayList<String> availableItemLocationIds;
 
-    public Category() {
-    }
+    public Item(){}
 
     public String getId() {
         return id;
@@ -57,11 +59,19 @@ public class Category {
         this.dateAdded = dateAdded;
     }
 
-    public ArrayList<CategoryItemRegister> getItems() {
-        return items;
+    public int getAvailability() {
+        return availability;
     }
 
-    public void setItems(ArrayList<CategoryItemRegister> items) {
-        this.items = items;
+    public void setAvailability(int availability) {
+        this.availability = availability;
+    }
+
+    public ArrayList<String> getAvailableItemLocationIds() {
+        return availableItemLocationIds;
+    }
+
+    public void setAvailableItemLocationIds(ArrayList<String> availableItemLocationIds) {
+        this.availableItemLocationIds = availableItemLocationIds;
     }
 }

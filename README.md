@@ -1,2 +1,2 @@
 # homeFoodApi
-Home food API to manage food remaining in home
+Home item API to manage item remaining in home
