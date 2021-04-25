@@ -2,6 +2,7 @@ package obi.sergi.homefood.Controllers.FoodLocation;
 
 import obi.sergi.homefood.Entities.Category.Category;
 import obi.sergi.homefood.Entities.Category.CategoryFoodRegister;
+import obi.sergi.homefood.Entities.Family.FamilyMemberUserRequest;
 import obi.sergi.homefood.Entities.Food.Food;
 import obi.sergi.homefood.Entities.Food.FoodItem;
 import obi.sergi.homefood.Entities.Food.FoodList;
@@ -44,21 +45,15 @@ public class FoodLocationController {
 
     @PostMapping("/register/name")
     public ResponseEntity registerFoodLocationName(@RequestBody FoodLocationRegisterSimplified foodLocationRegisterSimplified) {
-        Map<Object, Object> model = new HashMap<>();
-
         String foodLocationName = foodLocationRegisterSimplified.getName();
         FoodLocation foodLocation = foodLocationRepository.findFoodLocationByName(foodLocationName);
 
-        if (foodLocation != null){
-            model.put(Response.INFO, FOOD_LOCATION_EXISTS);
-            return new ResponseEntity(model, HttpStatus.valueOf(200));
+        if (foodLocation == null){
+            foodLocationRepository.save(new FoodLocation(foodLocationRegisterSimplified));
+            return new ResponseEntity(foodLocationRegisterSimplified, HttpStatus.valueOf(200));
+        } else {
+            return new ResponseEntity(null, HttpStatus.valueOf(200));
         }
-
-        FoodLocation foodLocationToRegister = new FoodLocation(foodLocationRegisterSimplified);
-        foodLocationRepository.save(foodLocationToRegister);
-
-        model.put(Response.INFO, SUCCESS);
-        return new ResponseEntity(model, HttpStatus.valueOf(200));
     }
 
     @PostMapping("/register")

@@ -1,15 +1,19 @@
 obi/sergi/homefood/Security/JwtTokenFilter.class
 obi/sergi/homefood/HomeFoodApplication.class
+obi/sergi/homefood/Entities/FoodLocation/FoodLocation.class
+obi/sergi/homefood/Controllers/FoodLocation/FoodLocationController.class
 obi/sergi/homefood/Entities/Family/FamilyMemberRegister.class
 obi/sergi/homefood/Security/CustomUserDetailsService.class
 obi/sergi/homefood/Repositories/User/UserRepository.class
 obi/sergi/homefood/Utils/Response.class
 obi/sergi/homefood/Repositories/Category/CategoryRepository.class
+obi/sergi/homefood/Entities/FoodLocation/FoodLocationSimplified.class
 obi/sergi/homefood/Security/CorsFilter.class
 obi/sergi/homefood/Utils/DateFormater.class
 obi/sergi/homefood/Utils/RandomGenerator.class
 obi/sergi/homefood/Security/WebSecurityConfiguration.class
 obi/sergi/homefood/Entities/Food/Food.class
+obi/sergi/homefood/Entities/FoodLocation/FoodLocationRegisterSimplified.class
 obi/sergi/homefood/Repositories/Role/RoleRepository.class
 obi/sergi/homefood/Repositories/Food/FoodRepository.class
 obi/sergi/homefood/Controllers/Family/FamilyMemberController.class
@@ -19,6 +23,7 @@ obi/sergi/homefood/Entities/Family/Family.class
 obi/sergi/homefood/Security/JwtTokenProvider.class
 obi/sergi/homefood/Utils/Constants.class
 obi/sergi/homefood/Security/JwtConfigurer.class
+obi/sergi/homefood/Repositories/FoodLocation/FoodLocationRepository.class
 obi/sergi/homefood/Repositories/Family/FamilyRepository.class
 obi/sergi/homefood/Controllers/User/UserController.class
 obi/sergi/homefood/Entities/Role/Role.class
