@@ -9,5 +9,6 @@ public class Response {
     public static final String ACCOUNT_NOT_USER = "not user role";
 
     public static final String CATEGORY_EXISTS = "Category already exists";
+    public static final String FOOD_LOCATION_EXISTS = "Food location already exists";
 
 }

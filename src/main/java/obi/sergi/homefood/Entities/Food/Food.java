@@ -1,6 +1,5 @@
 package obi.sergi.homefood.Entities.Food;
 
-import obi.sergi.homefood.Entities.Supermarket.Supermarket;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,8 +12,9 @@ public class Food {
     private String id;
     private String name;
     private String familyId;
+    private String creatorUserId;
     private String dateAdded;
-    private ArrayList<String> availableSupermarketsIds;
+    private ArrayList<String> availableFoodLocationIds;
 
     public Food(){}
 
@@ -42,6 +42,14 @@ public class Food {
         this.familyId = familyId;
     }
 
+    public String getCreatorUserId() {
+        return creatorUserId;
+    }
+
+    public void setCreatorUserId(String creatorUserId) {
+        this.creatorUserId = creatorUserId;
+    }
+
     public String getDateAdded() {
         return dateAdded;
     }
@@ -50,11 +58,11 @@ public class Food {
         this.dateAdded = dateAdded;
     }
 
-    public ArrayList<String> getAvailableSupermarketsIds() {
-        return availableSupermarketsIds;
+    public ArrayList<String> getAvailableFoodLocationIds() {
+        return availableFoodLocationIds;
     }
 
-    public void setAvailableSupermarketsIds(ArrayList<String> availableSupermarketsIds) {
-        this.availableSupermarketsIds = availableSupermarketsIds;
+    public void setAvailableFoodLocationIds(ArrayList<String> availableFoodLocationIds) {
+        this.availableFoodLocationIds = availableFoodLocationIds;
     }
 }
