@@ -139,7 +139,7 @@ public class ItemController {
         return new ResponseEntity(model, HttpStatus.valueOf(200));
     }
 
-    @GetMapping("/update/availability/itemId/{itemId}/availability/{availability}")
+    @PutMapping("/update/itemId/{itemId}/availability/{availability}")
     public ResponseEntity updateItemAvailability(@PathVariable String itemId, @PathVariable int availability) {
         Item item = itemRepository.findItemById(itemId);
         item.setAvailability(availability);
