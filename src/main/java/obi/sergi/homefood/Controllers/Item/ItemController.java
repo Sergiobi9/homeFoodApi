@@ -8,9 +8,11 @@ import obi.sergi.homefood.Entities.Item.ItemDetails;
 import obi.sergi.homefood.Entities.Item.ItemList;
 import obi.sergi.homefood.Entities.ItemLocation.ItemLocation;
 import obi.sergi.homefood.Entities.ItemLocation.ItemLocationDetails;
+import obi.sergi.homefood.Entities.User.User;
 import obi.sergi.homefood.Repositories.Category.CategoryRepository;
 import obi.sergi.homefood.Repositories.Item.ItemRepository;
 import obi.sergi.homefood.Repositories.ItemLocation.ItemLocationRepository;
+import obi.sergi.homefood.Repositories.User.UserRepository;
 import obi.sergi.homefood.Utils.Constants;
 import obi.sergi.homefood.Utils.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,9 @@ public class ItemController {
 
     @Autowired
     private ItemRepository itemRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("/all/list/familyId/{familyId}")
     public ResponseEntity getItemListWithCategories(@PathVariable String familyId) {
@@ -122,7 +127,12 @@ public class ItemController {
             itemLocationDetails.add(new ItemLocationDetails(itemLocation));
         }
 
-        model.put("item", item);
+        String creatorUserId = item.getCreatorUserId();
+        User user = userRepository.findUserById(creatorUserId);
+        String itemRegisteredDate = item.getDateAdded();
+        ItemDetails itemDetails = new ItemDetails(item, user, itemRegisteredDate);
+
+        model.put("itemDetails", itemDetails);
         model.put("categoryDetails", categoryDetails);
         model.put("itemLocationDetails", itemLocationDetails);
 
