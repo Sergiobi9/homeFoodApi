@@ -116,13 +116,13 @@ public class ItemController {
         List<CategoryDetails> categoryDetails = new ArrayList<>();
         List<Category> categories = categoryRepository.findByItemId(itemId);
 
-        for(Category category : categories){
+        for (Category category : categories) {
             categoryDetails.add(new CategoryDetails(category));
         }
 
         List<ItemLocationDetails> itemLocationDetails = new ArrayList<>();
         List<String> itemLocationIds = item.getAvailableItemLocationIds();
-        for(String itemLocationId : itemLocationIds){
+        for (String itemLocationId : itemLocationIds) {
             ItemLocation itemLocation = itemLocationRepository.findItemLocationById(itemLocationId);
             itemLocationDetails.add(new ItemLocationDetails(itemLocation));
         }
@@ -137,5 +137,13 @@ public class ItemController {
         model.put("itemLocationDetails", itemLocationDetails);
 
         return new ResponseEntity(model, HttpStatus.valueOf(200));
+    }
+
+    @GetMapping("/update/availability/itemId/{itemId}/availability/{availability}")
+    public ResponseEntity updateItemAvailability(@PathVariable String itemId, @PathVariable int availability) {
+        Item item = itemRepository.findItemById(itemId);
+        item.setAvailability(availability);
+        itemRepository.save(item);
+        return new ResponseEntity(availability, HttpStatus.valueOf(200));
     }
 }
