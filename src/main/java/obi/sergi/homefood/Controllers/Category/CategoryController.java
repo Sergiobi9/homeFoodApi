@@ -43,4 +43,14 @@ public class CategoryController {
         model.put(Response.INFO, SUCCESS);
         return new ResponseEntity(model, HttpStatus.valueOf(200));
     }
+
+    @DeleteMapping("/categoryId/{categoryId}")
+    public ResponseEntity deleteCategoryById(@PathVariable String categoryId) {
+        Category categoryToCheck = categoryRepository.findCategoryById(categoryId);
+
+        if (categoryToCheck != null){
+            categoryRepository.delete(categoryToCheck);
+        }
+        return new ResponseEntity(HttpStatus.valueOf(200));
+    }
 }

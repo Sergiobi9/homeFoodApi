@@ -15,6 +15,7 @@ public class Item {
     private String creatorUserId;
     private String dateAdded;
     private int availability;
+    private double price;
     private ArrayList<String> availableItemLocationIds;
 
     public Item(){}
@@ -73,5 +74,13 @@ public class Item {
 
     public void setAvailableItemLocationIds(ArrayList<String> availableItemLocationIds) {
         this.availableItemLocationIds = availableItemLocationIds;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

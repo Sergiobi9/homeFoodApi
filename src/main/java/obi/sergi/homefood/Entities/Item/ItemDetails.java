@@ -9,6 +9,7 @@ public class ItemDetails {
     private String creatorFirstName;
     private String creatorLastName;
     private String registeredDate;
+    private double price;
     private int availability;
 
     public ItemDetails(Item item, User user, String registeredDate){
@@ -17,6 +18,7 @@ public class ItemDetails {
         this.creatorFirstName = user.getFirstName();
         this.creatorLastName = user.getLastName();
         this.registeredDate = registeredDate;
+        this.price = item.getPrice();
         this.availability = item.getAvailability();
     }
 
@@ -72,5 +74,13 @@ public class ItemDetails {
 
     public void setAvailability(int availability) {
         this.availability = availability;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

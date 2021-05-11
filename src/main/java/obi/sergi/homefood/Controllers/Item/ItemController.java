@@ -146,4 +146,26 @@ public class ItemController {
         itemRepository.save(item);
         return new ResponseEntity(availability, HttpStatus.valueOf(200));
     }
+
+    @DeleteMapping("/itemId/{itemId}")
+    public ResponseEntity deleteItem(@PathVariable String itemId) {
+        Item item = itemRepository.findItemById(itemId);
+        itemRepository.delete(item);
+
+        List<Category> categories = categoryRepository.findByItemId(itemId);
+
+        for (Category category : categories){
+            ArrayList<CategoryItemRegister> categoryItems = category.getItems();
+
+            for (int i = 0; i < categoryItems.size(); i++){
+                String categoryItemId = categoryItems.get(i).getItemId();
+                if (categoryItemId.equals(itemId)){
+                    categoryItems.remove(i);
+                }
+            }
+            category.setItems(categoryItems);
+            categoryRepository.save(category);
+        }
+        return new ResponseEntity(HttpStatus.valueOf(200));
+    }
 }
